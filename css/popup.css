@@ -1,0 +1,42 @@
+body {
+  font: 400 14px/20px "Helvetica", Arial, sans-serif;
+	width:300px;
+	padding: 0;
+}
+.Note {
+  text-align: center;
+  padding: 10px;
+  outline: black solid 3px;
+  display: grid;
+  grid-template-areas:
+  "collapse title title title link"
+  "text text text text text"
+  "text text text text text"
+  "comment comment comment delet delet";
+  grid-template-rows: 30px 1fr 1fr 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1px;
+  grid-auto-rows: minmax(10px);
+}
+.сollapse {
+  grid-area: collapse
+}
+.title {
+  grid-area: title;
+  background-color: red
+}
+.text {
+  grid-area: text;
+  background-color: green
+}
+.link {
+  grid-area: link;
+  background-color: yellow
+}
+.comment {
+  grid-area: comment
+}
+.delet_button {
+  grid-area: delet;
+  background-color: blue
+  }
