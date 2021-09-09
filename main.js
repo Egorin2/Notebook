@@ -4,8 +4,6 @@ function Note (string){
 this.time = new Date};
 
 function Note (string, url){
-	this.id;
-	this.title;
 	this.text = string,
 	this.url = url,
 	this.time = new Date;
@@ -14,11 +12,11 @@ function Note (string, url){
 function download(data) { // Функция загрузки в файл
 	let type = 'text/plain';
 	let filename = 'myfilename.txt';
-    var file = new Blob([data], {type: type});
+    let file = new Blob([data], {type: type});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
     else { // Others
-        var a = document.createElement("a"),
+        let a = document.createElement("a"),
                 url = URL.createObjectURL(file);
         a.href = url;
         a.download = filename;
@@ -34,7 +32,7 @@ function download(data) { // Функция загрузки в файл
 
 function createNote (word) {
 	let note = new Note (word.selectionText, word.pageUrl);
-	getItem(note);}
+	takeNote(note);}
 
 
 chrome.contextMenus.create({
@@ -43,16 +41,23 @@ title: "Типа кнопка",
  onclick: createNote,
 })
 chrome.contextMenus.create({
-	title: "Посмотреть хранилище",
+	title: "Посмотреть LS",
 	contexts: ["selection"],
 	onclick: checkLocalStorage,
+})
+chrome.contextMenus.create({
+	title: "Посмотреть хранилище",
+	contexts: ["selection"],
+	onclick: checkList,
 })
 chrome.contextMenus.create({
 	title: "Удалить всё",
 	contexts: ["selection"],
 	onclick: deleteLocalStorage,
 })
-
+function checkList(){
+	alert(testPubNote())
+}
 function checkLocalStorage (){
 	alert(localStorage.length);
 	for(let i=0; i<localStorage.length; i++) {

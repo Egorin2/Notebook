@@ -3,6 +3,33 @@ body {
 	width:300px;
 	padding: 0;
 }
+.ParentNote {
+  text-align: center;
+  padding: 10px;
+  outline: black solid 3px;
+  display: grid;
+  grid-template-areas:
+  "collapse title title title link"
+  "child child child child child"
+  "comment comment comment delet delet";
+  grid-template-rows: 30px 1fr 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1px;
+  grid-auto-rows: minmax(10px);
+}
+.ChildrenDiv{
+  grid-area: child;
+}
+.ChildNote {
+  display: grid;
+  grid-template-areas:
+  "text text"
+  "comment delet";
+  grid-template-rows: 1fr 30px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1px;
+  grid-auto-rows: minmax(10px);
+}
 .Note {
   text-align: center;
   padding: 10px;
